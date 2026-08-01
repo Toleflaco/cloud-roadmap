@@ -1,0 +1,72 @@
+# ==========================================================================
+# SECRETOS Y CREDENCIALES — nunca deben subirse
+# ==========================================================================
+# Credenciales de AWS (por si alguna vez se copian al repo por error)
+.aws/
+*credentials*
+*.csv
+aws-secrets*
+.secrets
+
+# Claves y certificados
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Ficheros de entorno
+.env
+.env.*
+*.env
+
+# ==========================================================================
+# TERRAFORM — el state guarda secretos en claro; nunca al repo
+# ==========================================================================
+# State local y backups (aunque usemos backend remoto, por seguridad)
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Ficheros de variables con valores (los *.tf sí van; los tfvars con valores no)
+*.tfvars
+*.tfvars.json
+!example.tfvars
+
+# Directorios de trabajo de Terraform
+.terraform/
+.terraform.lock.hcl
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ==========================================================================
+# KUBERNETES / HELM
+# ==========================================================================
+# Kubeconfig con credenciales de cluster
+kubeconfig
+*.kubeconfig
+.kube/
+
+# Secrets de K8s renderizados
+*-secret.yaml
+secrets.yaml
+
+# Helm
+charts/
+*.tgz
+
+# ==========================================================================
+# SISTEMA / EDITOR
+# ==========================================================================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
