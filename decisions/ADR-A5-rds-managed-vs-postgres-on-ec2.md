@@ -1,4 +1,4 @@
-# ADR-A3 — Persistencia relacional: RDS gestionada en lugar de Postgres autoinstalado en EC2
+# ADR-A5 — Persistencia relacional: RDS gestionada en lugar de Postgres autoinstalado en EC2
 
 **Fecha:** 8 agosto 2026
 **Estado:** Accepted
@@ -67,8 +67,8 @@ La aplicación conecta con un usuario aplicativo (`task_manager_app`) distinto d
 
 ## Related decisions
 
-- **ADR-A1 (Accepted, 2026-08-02)** — VPC custom con separación explícita entre subnets públicas y privadas. Es la precondición de red que permite ubicar RDS en subnets privadas sin exposición a internet.
-- **ADR-A2 (Accepted, 2026-08-08)** — Credenciales AWS con Instance Profile y SDK v2. Aplica a la relación app-S3, no a la relación app-RDS (que va vía JDBC con usuario/password aplicativos), pero cierra la coherencia arquitectónica del proyecto.
+- **ADR-A1 (Accepted, 2026-08-02)** — VPC custom con separación explícita entre subnets públicas y privadas. Precondición de red que permite ubicar RDS en subnets privadas sin exposición a internet.
+- **ADR-A4 (Accepted, 2026-08-08)** — Credenciales AWS con Instance Profile y SDK v2. Cierra la coherencia arquitectónica del proyecto en el acceso a servicios AWS.
 
 ## References
 
