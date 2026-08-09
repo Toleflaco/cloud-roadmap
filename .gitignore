@@ -2,9 +2,13 @@
 # SECRETOS Y CREDENCIALES — nunca deben subirse
 # ==========================================================================
 # Credenciales de AWS (por si alguna vez se copian al repo por error)
+# Credenciales de AWS (por si alguna vez se copian al repo por error)
 .aws/
-*credentials*
-*.csv
+credentials
+credentials.csv
+credentials.json
+rootkey.csv
+accesskeys.csv
 aws-secrets*
 .secrets
 
