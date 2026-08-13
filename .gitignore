@@ -40,7 +40,6 @@ id_ed25519*
 
 # Directorios de trabajo de Terraform
 .terraform/
-.terraform.lock.hcl
 crash.log
 crash.*.log
 override.tf
