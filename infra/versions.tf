@@ -10,10 +10,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "toleflaco-terraform-state-2026"
-    key            = "envs/dev/terraform.tfstate"
-    region         = "eu-west-1"
-    dynamodb_table = "terraform-state-lock"
-    encrypt        = true
+    bucket       = "toleflaco-terraform-state-2026"
+    key          = "envs/dev/terraform.tfstate"
+    region       = "eu-west-1"
+    use_lockfile = true
+    encrypt      = true
   }
 }
