@@ -17,3 +17,7 @@ terraform {
     encrypt      = true
   }
 }
+# AWS provider configuration. Region matches where the rest of the task-manager infra lives.
+provider "aws" {
+  region = "eu-west-1"
+}
