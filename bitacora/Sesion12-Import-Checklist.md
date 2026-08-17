@@ -8,8 +8,8 @@ Recursos AWS creados manualmente en S1-S8 pendientes de importar al state de Ter
 
 ## S12-B (objetivo hoy 17 ago 2026 tarde, ventana 17:00-19:00)
 
-- [ ] Subnet `subnet-00571f5c84fc414d3` (priv 1a) → `aws_subnet.private_1a`
-- [ ] Subnet `subnet-0af15e9e05f81098f` (priv 1b) → `aws_subnet.private_1b`
+- [x] Subnet `subnet-00571f5c84fc414d3` (priv 1a) → `aws_subnet.private_1a`
+- [x] Subnet `subnet-0af15e9e05f81098f` (priv 1b) → `aws_subnet.private_1b`
 - [ ] Subnet `subnet-0af881e02d4a9322b` (pub 1a) → `aws_subnet.public_1a`
 - [ ] Subnet `subnet-066074bd45c1a46f6` (pub 1b) → `aws_subnet.public_1b`
 - [ ] IGW `igw-0ab423637224cab0c` → `aws_internet_gateway.main`
