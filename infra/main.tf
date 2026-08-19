@@ -48,3 +48,10 @@ resource "aws_subnet" "public_1b" {
     Name = "task-manager-subnet-public2-eu-west-1b"
   }
 }
+
+resource "aws_internet_gateway" "task_manager" {
+  vpc_id = "vpc-0d36eccf71cddeda7"
+  tags = {
+    Name = "task-manager-igw"
+  }
+}
