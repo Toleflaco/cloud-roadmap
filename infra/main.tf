@@ -79,4 +79,26 @@ resource "aws_route_table_association" "public_1b" {
   route_table_id = aws_route_table.public.id
 }
 
+resource "aws_route_table" "private_1a" {
+  vpc_id = aws_vpc.main.id
+  tags = {
+    Name = "task-manager-rtb-private1-eu-west-1a"
+  }
+}
 
+resource "aws_route_table_association" "private_1a" {
+  subnet_id      = aws_subnet.private_1a.id
+  route_table_id = aws_route_table.private_1a.id
+}
+
+resource "aws_route_table" "private_1b" {
+  vpc_id = aws_vpc.main.id
+  tags = {
+    Name = "task-manager-rtb-private2-eu-west-1b"
+  }
+}
+
+resource "aws_route_table_association" "private_1b" {
+  subnet_id = aws_subnet.private_1b.id
+  route_table_id = aws_route_table.private_1b.id
+}
