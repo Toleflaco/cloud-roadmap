@@ -109,6 +109,12 @@ resource "aws_security_group" "ec2" {
   vpc_id      = aws_vpc.main.id
 }
 
+resource "aws_security_group" "db" {
+  name        = "task-manager-db-sg"
+  description = "PostgreSQL access from task-manager-ec2 only"
+  vpc_id      = aws_vpc.main.id
+}
+
 resource "aws_vpc_security_group_ingress_rule" "ec2_ssh_home" {
   security_group_id = aws_security_group.ec2.id
   ip_protocol       = "tcp"
@@ -120,15 +126,31 @@ resource "aws_vpc_security_group_ingress_rule" "ec2_ssh_home" {
 
 resource "aws_vpc_security_group_ingress_rule" "ec2_http_home" {
   security_group_id = aws_security_group.ec2.id
-  ip_protocol = "tcp"
-  from_port = 8080
-  to_port = 8080
-  cidr_ipv4 = "88.11.202.24/32"
-  description = "TCP port 8080"
+  ip_protocol       = "tcp"
+  from_port         = 8080
+  to_port           = 8080
+  cidr_ipv4         = "88.11.202.24/32"
+  description       = "TCP port 8080"
 }
 
 resource "aws_vpc_security_group_egress_rule" "ec2_all_out" {
   security_group_id = aws_security_group.ec2.id
-  ip_protocol = "-1"
-  cidr_ipv4 = "0.0.0.0/0"
+  ip_protocol       = "-1"
+  cidr_ipv4         = "0.0.0.0/0"
 }
+
+resource "aws_vpc_security_group_ingress_rule" "db_postgres_from_ec2" {
+  security_group_id            = aws_security_group.db.id
+  ip_protocol                  = "tcp"
+  from_port                    = 5432
+  to_port                      = 5432
+  referenced_security_group_id = aws_security_group.ec2.id
+  description                  = "PostgreSQL from EC2 app tier"
+}
+
+resource "aws_vpc_security_group_egress_rule" "db_all_out" {
+  security_group_id = aws_security_group.db.id
+  ip_protocol       = "-1"
+  cidr_ipv4         = "0.0.0.0/0"
+}
+
