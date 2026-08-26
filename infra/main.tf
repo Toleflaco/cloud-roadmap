@@ -99,6 +99,36 @@ resource "aws_route_table" "private_1b" {
 }
 
 resource "aws_route_table_association" "private_1b" {
-  subnet_id = aws_subnet.private_1b.id
+  subnet_id      = aws_subnet.private_1b.id
   route_table_id = aws_route_table.private_1b.id
+}
+
+resource "aws_security_group" "ec2" {
+  name        = "task-manager-ec2-sg"
+  description = "SSH access from my IP for task-manager EC2"
+  vpc_id      = aws_vpc.main.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "ec2_ssh_home" {
+  security_group_id = aws_security_group.ec2.id
+  ip_protocol       = "tcp"
+  from_port         = 22
+  to_port           = 22
+  cidr_ipv4         = "88.11.202.24/32"
+  description       = "SSH from home"
+}
+
+resource "aws_vpc_security_group_ingress_rule" "ec2_http_home" {
+  security_group_id = aws_security_group.ec2.id
+  ip_protocol = "tcp"
+  from_port = 8080
+  to_port = 8080
+  cidr_ipv4 = "88.11.202.24/32"
+  description = "TCP port 8080"
+}
+
+resource "aws_vpc_security_group_egress_rule" "ec2_all_out" {
+  security_group_id = aws_security_group.ec2.id
+  ip_protocol = "-1"
+  cidr_ipv4 = "0.0.0.0/0"
 }
