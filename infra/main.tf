@@ -154,3 +154,16 @@ resource "aws_vpc_security_group_egress_rule" "db_all_out" {
   cidr_ipv4         = "0.0.0.0/0"
 }
 
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id            = aws_vpc.main.id
+  service_name      = "com.amazonaws.eu-west-1.s3"
+  vpc_endpoint_type = "Gateway"
+  route_table_ids = [
+    aws_route_table.public.id,
+    aws_route_table.private_1a.id,
+    aws_route_table.private_1b.id
+  ]
+  tags = {
+    Name = "task-manager-vpce-s3"
+  }
+}
