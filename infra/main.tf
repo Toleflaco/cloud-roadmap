@@ -162,6 +162,41 @@ resource "aws_vpc_endpoint" "s3" {
     aws_route_table.private_1a.id,
     aws_route_table.private_1b.id
   ]
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid      = "ListAllMyBuckets"
+        Effect   = "Allow"
+        Action   = "s3:ListAllMyBuckets"
+        Principal = {
+          AWS = aws_iam_role.ec2_task_manager.arn
+        }
+        Resource = "*"
+      },
+      {
+        Sid      = "ListSpecificBucket"
+        Effect   = "Allow"
+        Action   = "s3:ListBucket"
+        Principal = {
+          AWS = aws_iam_role.ec2_task_manager.arn
+        }
+        Resource = "arn:aws:s3:::toleflaco-task-manager-uploads-2026"
+      },
+      {
+        Sid    = "ReadWriteObjects"
+        Effect = "Allow"
+        Action = [
+          "s3:PutObject",
+          "s3:GetObject"
+        ]
+        Principal = {
+          AWS = aws_iam_role.ec2_task_manager.arn
+        }
+        Resource = "arn:aws:s3:::toleflaco-task-manager-uploads-2026/*"
+      }
+    ]
+  })
   tags = {
     Name = "task-manager-vpce-s3"
   }
