@@ -23,3 +23,10 @@ resource "aws_s3_bucket_public_access_block" "task_manager_uploads" {
   block_public_policy     = true
   restrict_public_buckets = true
 }
+
+resource "aws_s3_bucket_versioning" "task_manager_uploads" {
+  bucket = aws_s3_bucket.task_manager_uploads.bucket
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
