@@ -21,7 +21,8 @@ resource "aws_db_instance" "task_manager_db" {
   backup_retention_period    = 1
   copy_tags_to_snapshot      = true
   deletion_protection        = true
-  skip_final_snapshot        = true
+  skip_final_snapshot        = false
+  final_snapshot_identifier  = "task-manager-db-final-snapshot"
   auto_minor_version_upgrade = true
   ca_cert_identifier         = "rds-ca-rsa2048-g1"
   apply_immediately          = true
