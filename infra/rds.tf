@@ -16,6 +16,7 @@ resource "aws_db_instance" "task_manager_db" {
   db_subnet_group_name       = aws_db_subnet_group.task_manager.name
   vpc_security_group_ids     = [aws_security_group.db.id]
   allocated_storage          = 20
+  storage_type               = "gp3"
   storage_encrypted          = true
   backup_retention_period    = 1
   copy_tags_to_snapshot      = true
@@ -23,6 +24,7 @@ resource "aws_db_instance" "task_manager_db" {
   skip_final_snapshot        = true
   auto_minor_version_upgrade = true
   ca_cert_identifier         = "rds-ca-rsa2048-g1"
+  apply_immediately          = true
   tags = {
     Project = "task-manager"
   }
