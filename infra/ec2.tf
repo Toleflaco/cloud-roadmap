@@ -13,7 +13,7 @@ resource "aws_instance" "task_manager_ec2" {
   }
   root_block_device {
     delete_on_termination = true
-    encrypted             = false
+    encrypted             = true
   }
   tags = {
     Name = "task-manager-ec2"
