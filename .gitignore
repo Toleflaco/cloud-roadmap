@@ -32,6 +32,9 @@ id_ed25519*
 *.tfstate
 *.tfstate.*
 *.tfstate.backup
+# Planes congelados (out de terraform plan)
+*.tfplan
+
 
 # Ficheros de variables con valores (los *.tf sí van; los tfvars con valores no)
 *.tfvars
