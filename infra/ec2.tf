@@ -21,6 +21,6 @@ resource "aws_instance" "task_manager_ec2" {
 }
 
 resource "aws_key_pair" "task_manager_key" {
-  key_name = "task-manager-key"
+  key_name   = "task-manager-key"
   public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ1Zisc7toeYK6rk0uSAv5lfUm1WxKkJIpWiC4dnxyPG"
 }

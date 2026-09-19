@@ -166,18 +166,18 @@ resource "aws_vpc_endpoint" "s3" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid      = "ListAllMyBuckets"
-        Effect   = "Allow"
-        Action   = "s3:ListAllMyBuckets"
+        Sid    = "ListAllMyBuckets"
+        Effect = "Allow"
+        Action = "s3:ListAllMyBuckets"
         Principal = {
           AWS = aws_iam_role.ec2_task_manager.arn
         }
         Resource = "*"
       },
       {
-        Sid      = "ListSpecificBucket"
-        Effect   = "Allow"
-        Action   = "s3:ListBucket"
+        Sid    = "ListSpecificBucket"
+        Effect = "Allow"
+        Action = "s3:ListBucket"
         Principal = {
           AWS = aws_iam_role.ec2_task_manager.arn
         }
