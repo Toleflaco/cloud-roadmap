@@ -120,7 +120,7 @@ resource "aws_vpc_security_group_ingress_rule" "ec2_ssh_home" {
   ip_protocol       = "tcp"
   from_port         = 22
   to_port           = 22
-  cidr_ipv4         = "88.11.202.24/32"
+  cidr_ipv4         = "88.11.252.248/32"
   description       = "SSH from home"
 }
 
@@ -129,7 +129,7 @@ resource "aws_vpc_security_group_ingress_rule" "ec2_http_home" {
   ip_protocol       = "tcp"
   from_port         = 8080
   to_port           = 8080
-  cidr_ipv4         = "88.11.202.24/32"
+  cidr_ipv4         = "88.11.252.248/32"
   description       = "TCP port 8080"
 }
 
